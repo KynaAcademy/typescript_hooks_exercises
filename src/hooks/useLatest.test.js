@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useLatest } from "./useLatest";
 
-test.skip("it always returns a ref of the value which was passed in", () => {
+test("it always returns a ref of the value which was passed in", () => {
   let value = 4;
   const hook = renderHook(() => useLatest(value));
 
@@ -23,7 +23,7 @@ test.skip("it always returns a ref of the value which was passed in", () => {
   expect(hook.result.current).toEqual({ current: 6 });
 });
 
-test.skip("this ref always contains the latest value, even if used within something memoized", () => {
+test("this ref always contains the latest value, even if used within something memoized", () => {
   let value = 4;
   const hook = renderHook(() => {
     const latest = useLatest(value);
