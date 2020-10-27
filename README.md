@@ -88,26 +88,77 @@ _TODO describe_
 
 ## useValidated
 
-_TODO describe_
+Example usage:
+
+```tsx
+const useValidated = createUseValidated((email: string) => {
+  return !!email.match(EMAIL_REGEX);
+});
+
+const SignupForm = () => {
+  const [email, setEmail] = useState("");
+  const emailValid = useValidated(email);
+  // emailValid: "idle" | "valid" | "invalid"
+```
 
 ## useAsyncCallback
 
-_TODO describe_
+Example usage:
+
+```tsx
+const { call, callAsync, status, data, error } = useAsyncCallback(async () => {
+  const res = await axios.get("...");
+  const data = await res.json();
+  return data;
+});
+```
 
 ## TODO: useRememberDeep
 
-_TODO write tests_
+Example usage:
+
+```tsx
+const [name, setName] = useState("Gordon");
+
+const params = useRememberDeep({
+  name,
+  hobbies: ["cooking", "yelling", "puns"],
+});
+
+// ^^ params has the same data as the value passed into the
+//  hook, but is guaranteed to be referentially stable
+//  as long as the value doesn't change structurally
+```
 
 ## TODO: useDeepCompareEffect
 
-_TODO write tests_
+Exammple usage:
+
+```tsx
+const [name, setName] = useState("Gordon");
+
+const params = {
+  name,
+  hobbies: ["cooking", "yelling", "puns"],
+};
+
+useDeepCompareEffect(() => {
+  // ...
+}, [params]);
+```
+
+This effect should only run when it's dependencies array changes _structurally_. If a dependency is a different object reference but structurally the same as the previous render, don't run the effect.
+
+(Should also support cleanup, just like regular effects.)
 
 ## TODO: useStateWithHistory
 
-_TODO write tests for a hook like this:_
+Example usage in a game of tic-tac-toe:
 
 ```tsx
-const [value, setValue, { undo, redo, history }] = useStateWithHistory(
-  "some value"
-);
+const [board, setBoard, { undo, redo, history }] = useStateWithHistory([
+  ["X", " ", "O"],
+  ["O", " ", " "],
+  [" ", " ", " "],
+]);
 ```
