@@ -27,5 +27,7 @@ Solutions for each of the exercises can be found in the Pull Requests.
 - useToggle
 - useEffectOnce
 - usePrevious
+- useLatest
 - useValidated
+- useAsyncCallback
 - _(more to come)_
