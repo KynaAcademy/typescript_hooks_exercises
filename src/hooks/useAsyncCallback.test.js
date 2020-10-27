@@ -12,7 +12,7 @@ const asyncRejectingFunction = async () => {
   throw "nope";
 };
 
-test.skip("starts out in the idle state", () => {
+test("starts out in the idle state", () => {
   const hook = renderHook(() => useAsyncCallback(asyncResolvingFunction));
 
   expect(hook.result.current).toMatchObject({
@@ -22,7 +22,7 @@ test.skip("starts out in the idle state", () => {
   });
 });
 
-test.skip("the success state is achieved", async () => {
+test("the success state is achieved", async () => {
   const hook = renderHook(() => useAsyncCallback(asyncResolvingFunction));
 
   expect(hook.result.current).toMatchObject({
@@ -44,7 +44,7 @@ test.skip("the success state is achieved", async () => {
   });
 });
 
-test.skip("the error state is achieved", async () => {
+test("the error state is achieved", async () => {
   const hook = renderHook(() => useAsyncCallback(asyncRejectingFunction));
 
   expect(hook.result.current).toMatchObject({
@@ -66,7 +66,7 @@ test.skip("the error state is achieved", async () => {
   });
 });
 
-test.skip("reset should work", async () => {
+test("reset should work", async () => {
   const hook = renderHook(() => useAsyncCallback(asyncResolvingFunction));
 
   act(() => {
