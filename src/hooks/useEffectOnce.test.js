@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useEffectOnce } from "./useEffectOnce";
 
-test.skip("it runs the effect", () => {
+test("it runs the effect", () => {
   const fn = jest.fn();
 
   renderHook(() => useEffectOnce(fn));
@@ -9,7 +9,7 @@ test.skip("it runs the effect", () => {
   expect(fn).toBeCalledTimes(1);
 });
 
-test.skip("it runs the effect only once", () => {
+test("it runs the effect only once", () => {
   const fn = jest.fn();
 
   const hook = renderHook(() => useEffectOnce(fn));
