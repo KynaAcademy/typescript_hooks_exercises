@@ -26,5 +26,6 @@ Solutions for each of the exercises can be found in the Pull Requests.
 
 - useToggle
 - useEffectOnce
+- usePrevious
 - useValidated
 - _(more to come)_
