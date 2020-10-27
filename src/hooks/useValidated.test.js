@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { createUseValidated } from "./useValidated";
 
-test.skip("starts out idle", () => {
+test("starts out idle", () => {
   const useValidated = createUseValidated(() => true);
 
   const hook = renderHook(() => useValidated());
@@ -9,7 +9,7 @@ test.skip("starts out idle", () => {
   expect(hook.result.current).toBe("idle");
 });
 
-test.skip("stays idle as long as a nullish value is given", () => {
+test("stays idle as long as a nullish value is given", () => {
   const useValidated = createUseValidated(() => true);
 
   let value = undefined;
@@ -29,7 +29,7 @@ test.skip("stays idle as long as a nullish value is given", () => {
   expect(hook.result.current).toBe("idle");
 });
 
-test.skip("starts out with correct validation", () => {
+test("starts out with correct validation", () => {
   const useValidated = createUseValidated((value) => {
     return value.indexOf("a") >= 0;
   });
@@ -40,7 +40,7 @@ test.skip("starts out with correct validation", () => {
   expect(hook.result.current).toBe("valid");
 });
 
-test.skip("revalidates when value changes", () => {
+test("revalidates when value changes", () => {
   const useValidated = createUseValidated((value) => {
     return value.indexOf("a") >= 0;
   });
