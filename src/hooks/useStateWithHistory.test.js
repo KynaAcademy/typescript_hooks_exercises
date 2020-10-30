@@ -1,13 +1,13 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useStateWithHistory } from "./useStateWithHistory";
 
-test.skip("it should set the initial state", () => {
+test("it should set the initial state", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   expect(hook.result.current[0]).toBe(4);
 });
 
-test.skip("but not change the state if the initial state values changes", () => {
+test("but not change the state if the initial state values changes", () => {
   let value = 4;
   const hook = renderHook(() => useStateWithHistory(value));
 
@@ -18,7 +18,7 @@ test.skip("but not change the state if the initial state values changes", () => 
   expect(hook.result.current[0]).toBe(4);
 });
 
-test.skip("setting the state should be possible", () => {
+test("setting the state should be possible", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -27,13 +27,13 @@ test.skip("setting the state should be possible", () => {
   expect(hook.result.current[0]).toBe(5);
 });
 
-test.skip("initially, history is array with single element (initialValue)", () => {
+test("initially, history is array with single element (initialValue)", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   expect(hook.result.current[2]).toMatchObject({ index: 0, history: [4] });
 });
 
-test.skip("setting the value should add to history and increment the index", () => {
+test("setting the value should add to history and increment the index", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -42,7 +42,7 @@ test.skip("setting the value should add to history and increment the index", () 
   expect(hook.result.current[2]).toMatchObject({ index: 1, history: [4, 5] });
 });
 
-test.skip("undoing should reset to previous value, but keep the history", () => {
+test("undoing should reset to previous value, but keep the history", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -55,7 +55,7 @@ test.skip("undoing should reset to previous value, but keep the history", () => 
   expect(hook.result.current[2]).toMatchObject({ index: 0, history: [4, 5] });
 });
 
-test.skip("undoing should not do anything if already at index 0", () => {
+test("undoing should not do anything if already at index 0", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -77,7 +77,7 @@ test.skip("undoing should not do anything if already at index 0", () => {
   expect(hook.result.current[2]).toMatchObject({ index: 0, history: [4, 5] });
 });
 
-test.skip("redoing should go to the next value, keeping history", () => {
+test("redoing should go to the next value, keeping history", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -93,7 +93,7 @@ test.skip("redoing should go to the next value, keeping history", () => {
   expect(hook.result.current[2]).toMatchObject({ index: 1, history: [4, 5] });
 });
 
-test.skip("redoing should not do anything if already at end if history", () => {
+test("redoing should not do anything if already at end if history", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -115,7 +115,7 @@ test.skip("redoing should not do anything if already at end if history", () => {
   expect(hook.result.current[2]).toMatchObject({ index: 1, history: [4, 5] });
 });
 
-test.skip("setting the value should replace any future history with new value", () => {
+test("setting the value should replace any future history with new value", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   act(() => {
@@ -147,7 +147,7 @@ test.skip("setting the value should replace any future history with new value", 
   });
 });
 
-test.skip("the setter function is referentially stable", () => {
+test("the setter function is referentially stable", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   const [, setValue1] = hook.result.current;
@@ -161,7 +161,7 @@ test.skip("the setter function is referentially stable", () => {
   expect(setValue1).toBe(setValue2);
 });
 
-test.skip("the undo function is referentially stable", () => {
+test("the undo function is referentially stable", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   const [, setValue, { undo: undo1 }] = hook.result.current;
@@ -175,7 +175,7 @@ test.skip("the undo function is referentially stable", () => {
   expect(undo1).toBe(undo2);
 });
 
-test.skip("the redo function is referentially stable", () => {
+test("the redo function is referentially stable", () => {
   const hook = renderHook(() => useStateWithHistory(4));
 
   const [, setValue, { redo: redo1 }] = hook.result.current;
