@@ -156,9 +156,17 @@ This effect should only run when it's dependencies array changes _structurally_.
 Example usage in a game of tic-tac-toe:
 
 ```tsx
-const [board, setBoard, { undo, redo, history }] = useStateWithHistory([
+const [board, setBoard, { undo, redo, history, index }] = useStateWithHistory([
   ["X", " ", "O"],
   ["O", " ", " "],
   [" ", " ", " "],
 ]);
 ```
+
+The history behaves like browser history, which means that:
+
+- if you "undo", you go back in history (if possible), but the history is kept in memory
+- if you "redo", you go forward in history (if possible)
+- if you set a new value, and there's "future history" which you've undone, then that future history is replaced with the new value
+
+_Hint: use a single `useState` (or a single `useReducer`), instead of multiple state cells and/or `useRef`. You can also make it with refs or multiplle state cells, but it will be easier to think about it with just a single state cell._
