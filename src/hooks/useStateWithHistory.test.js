@@ -143,7 +143,7 @@ test("setting the value should replace any future history with new value", () =>
   });
   expect(hook.result.current[2]).toMatchObject({
     index: 2,
-    history: [4, 5, 42],
+    history: [4, 5, 6, 7, 42],
   });
 });
 
