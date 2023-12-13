@@ -1,4 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
+
 import { useToggle } from "./useToggle";
 
 test.skip("returns the right data", () => {

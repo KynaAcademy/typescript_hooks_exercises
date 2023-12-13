@@ -1,4 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
+
 import { useStateWithHistory } from "./useStateWithHistory";
 
 test.skip("it should set the initial state", () => {

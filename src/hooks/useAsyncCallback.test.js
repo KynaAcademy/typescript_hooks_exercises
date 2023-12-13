@@ -1,4 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
+
 import { useAsyncCallback } from "./useAsyncCallback";
 
 const asyncResolvingFunction = async () => {

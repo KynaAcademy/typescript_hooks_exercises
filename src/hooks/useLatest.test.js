@@ -1,5 +1,6 @@
+import { act, renderHook } from "@testing-library/react";
+
 import { useCallback } from "react";
-import { renderHook, act } from "@testing-library/react-hooks";
 import { useLatest } from "./useLatest";
 
 test.skip("it always returns a ref of the value which was passed in", () => {
